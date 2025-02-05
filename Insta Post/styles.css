@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+header .search-bar input {
+    padding: 5px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.post {
+    background-color: #fff;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-header .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.post-header .user-info .user-avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.post-header .username {
+    font-weight: bold;
+}
+
+.post-header .post-options button {
+    background: none;
+    border: none;
+    font-size: 20px;
+}
+
+.post-image img {
+    width: 100%;
+    height: auto;
+}
+
+.post-footer {
+    padding: 10px;
+}
+
+.post-footer .likes,
+.post-footer .comments {
+    margin-bottom: 10px;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    color: #e1306c;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#comment-input {
+    width: 80%;
+    padding: 5px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#post-comment-btn {
+    padding: 5px 10px;
+    background-color: #e1306c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
