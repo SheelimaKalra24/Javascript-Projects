@@ -1,0 +1,17 @@
+.Container{
+    border: 5px solid black;
+    padding-left: 8px;
+    height: 280px;
+    width: 450px;
+    background-color: rgb(224, 224, 250);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+h1{
+    text-align: center;
+    padding-right: 10px;
+}
+#submit{
+    text-align: center;
+    font-weight: bold;
+}
