@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    body{
+      background-color: black;
+      color: orange;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: larger;
+    }
+    #form{
+      display: flex;
+      gap: 15px;
+      flex-direction: column;
+      padding: 40px;
+      background-color: rgb(42, 42, 42);
+      border-radius: 40px;
+    }
+    .input-box{
+      display: flex;
+      flex-direction: column;
+    }
+    .input-box input,
+    .input-box select{
+      padding: 5px;
+      font-size: 18px;
+    }
+    .input-box input{
+      background-color: gray;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Registration Form</h2>
+  <form id="form">
+    <div class="input-box">
+      <label for="full_name">Full Name</label>
+      <input type="text" name="full_name" id="full_name" maxlength="20">
+
+      <label for="dob">DOB</label>
+      <input type="date" name="dob" id="dob">
+    </div>
+    
+    <div class="input-box">
+      <label for="age">Age</label>
+      <input type="text" name="age" id="age">
+
+      <label for="gender">Gender</label>
+      <select name="gender" id="gender">
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+
+    <div class="input-box">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username">
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email">
+    </div>
+
+    <div class="input-box">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password">
+
+      <label for="passowrd_confirm">Confirm Password</label>
+      <input type="password" name="passowrd_confirm" id="passowrd_confirm">
+    </div>
+
+    <div class="buttons">
+      <button id="submit" type="submit">Submit</button>
+      <button id="reset" type="reset">Reset</button>
+    </div>
+    
+  </form>
+
+
+
+  <script>
+    let fullNameinput=document.getElementById("full_name")
+    let dobinput=document.getElementById("dob")
+    let ageinput=document.getElementById("age")
+    let genderinput=document.getElementById("gender")
+    let userNameinput=document.getElementById("username")
+    let emailinput=document.getElementById("email")
+    let passwordinput=document.getElementById("password")
+    let passwordConfirminput=document.getElementById("password_confirm")
+
+    let btnSubmitinput=document.getElementById("submit")
+    let btnResetinput=document.getElementById("reset")
+
+    let cases = {
+      lower: false,
+      upper: false,
+      nums: false,
+      spcial: false,
+      length: false,
+      confirm: false,
+      email: false,
+      age: false,
+    };
+
+    function checkEmail() {
+      let emailVal = email.value;
+      let atIdx = emailVal.indexOf("@");
+      let dotIdx = emailVal.indexOf(".");
+
+      if (atIdx == -1 || dotIdx == -1) return;
+
+      if (atIdx > 0 && dotIdx > atIdx + 1 && dotIdx < emailVal.length - 1) {
+        cases.email = true;
+      } else {
+        cases.email = false;
+      }
+    }
+    function checkPassword() {
+      let passwordVal = password.value;
+
+      let spcialChars = "~!@#$%^&*()_+=-`,.;'/<>?:][{}\\]\"";
+      let lowerChars = "abcdefghijklmnopqrstuvwxyz";
+      let upperChars = lowerChars.toUpperCase();
+      let nums = "0123456789";
+
+      if (password.value.length >= 8) {
+        cases.length = true;
+      }
+
+      for (let i = 0; i < passwordVal.length; i++) {
+        if (spcialChars.indexOf(passwordVal[i]) != -1) {
+          cases.spcial = true;
+        }
+        if (upperChars.indexOf(passwordVal[i]) != -1) {
+          cases.upper = true;
+        }
+        if (lowerChars.indexOf(passwordVal[i]) != -1) {
+          cases.lower = true;
+        }
+        if (nums.indexOf(passwordVal[i]) != -1) {
+          cases.nums = true;
+        }
+      }
+      console.log(cases);
+    }
+
+    function checkPasswordConfirm() {
+      if (password.value == passwordConfirm.value) cases.confirm = true;
+    }
+
+    function checkAge(){
+      if (18<age.value && age.value <=99 ){
+          cases.age=true;
+      }
+      else{
+        cases.age=false;
+      }
+    }
+
+    btnSubmit.onclick = (e) => {
+      e.preventDefault();
+      checkPassword();
+      checkPasswordConfirm()
+      checkEmail()
+      checkAge()
+    };
+
+
+  </script>
+
+</body>
+</html>
+
