@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .calculator-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 50px;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+    
+<body>
+    <h1>Calculator</h1>
+    <label for="a">A:</label>
+    <input type="number" id="ainput">
+    <br><br>
+
+    <label for="b">B:</label>
+    <input type="number" id="binput">
+    <br><br>
+
+    <button id="Add">+</button>
+    <button id="Subtract">-</button>
+    <button id="Multiply">*</button>
+    <button id="Divide">/</button>
+
+    <p id="output">Ans: <input type="text" id="result" disabled></p>
+
+    <script>
+        let ainput = document.getElementById("ainput");
+        let binput = document.getElementById("binput");
+        let Add = document.getElementById("Add");
+        let Subtract = document.getElementById("Subtract");
+        let Multiply = document.getElementById("Multiply");
+        let Divide = document.getElementById("Divide");
+        let result = document.getElementById("result");
+
+        function calculate(operation) {
+            let a = parseFloat(ainput.value);
+            let b = parseFloat(binput.value);
+            let answer;
+
+            if (isNaN(a) || isNaN(b)) {
+                result.value = "Invalid input";
+                return;
+            }
+
+            switch (operation) {
+                case "Add":
+                    answer = a + b;
+                    break;
+                case "Subtract":
+                    answer = a - b;
+                    break;
+                case "Multiply":
+                    answer = a * b;
+                    break;
+                case "Divide":
+                    if (b === 0) {
+                        result.value = "Cannot divide by 0";
+                        return;
+                    }
+                    answer = a / b;
+                    break;
+                default:
+                    result.value = "Invalid operation";
+                    return;
+            }
+
+            result.value = answer;
+        }
+
+        Add.addEventListener("click", function() {
+            calculate("Add");
+        });
+
+        Subtract.addEventListener("click", function() {
+            calculate("Subtract");
+        });
+
+        Multiply.addEventListener("click", function() {
+            calculate("Multiply");
+        });
+
+        Divide.addEventListener("click", function() {
+            calculate("Divide");
+        });
+    </script>
+
+</body>
+</html>
